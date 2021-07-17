@@ -1,22 +1,22 @@
 "use strict";
 
-exports.showErrorImpl = function (err) {
+export var showErrorImpl = function (err) {
   return err.stack || err.toString();
 };
 
-exports.error = function (msg) {
+export var error = function (msg) {
   return new Error(msg);
 };
 
-exports.message = function (e) {
+export var message = function (e) {
   return e.message;
 };
 
-exports.name = function (e) {
+export var name = function (e) {
   return e.name || "Error";
 };
 
-exports.stackImpl = function (just) {
+export var stackImpl = function (just) {
   return function (nothing) {
     return function (e) {
       return e.stack ? just(e.stack) : nothing;
@@ -24,13 +24,13 @@ exports.stackImpl = function (just) {
   };
 };
 
-exports.throwException = function (e) {
+export var throwException = function (e) {
   return function () {
     throw e;
   };
 };
 
-exports.catchException = function (c) {
+export var catchException = function (c) {
   return function (t) {
     return function () {
       try {
